@@ -28,7 +28,7 @@ TMatrix<int>* matrC = nullptr;
 
 
 
-// Изменение размерности матриц
+// Изменяет размерности матриц
 System::Void MatrixForm::MyForm::numericUpDownSizeMatrix_ValueChanged(System::Object^ sender, System::EventArgs^ e)
 {
 	int size = Convert::ToInt32(numericUpDownSizeMatrix->Value);
@@ -82,6 +82,8 @@ System::Void MatrixForm::MyForm::numericUpDownSizeMatrix_ValueChanged(System::Ob
 
 
 
+
+// Складывает матрицы
 System::Void MatrixForm::MyForm::buttonAdd_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	matrC->operator=(*matrA + *matrB);
@@ -90,6 +92,7 @@ System::Void MatrixForm::MyForm::buttonAdd_Click(System::Object^ sender, System:
 	showMatrixB();
 	showMatrixC();
 }
+// Вычитает матрицы
 System::Void MatrixForm::MyForm::buttonDif_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	matrC->operator=(*matrA - *matrB);
@@ -98,6 +101,7 @@ System::Void MatrixForm::MyForm::buttonDif_Click(System::Object^ sender, System:
 	showMatrixB();
 	showMatrixC();
 }
+// Перемноженает матрицы
 System::Void MatrixForm::MyForm::buttonMult_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	matrC->operator=(*matrA * *matrB);
@@ -106,6 +110,7 @@ System::Void MatrixForm::MyForm::buttonMult_Click(System::Object^ sender, System
 	showMatrixB();
 	showMatrixC();
 }
+// Генерирует для матриц A и B случайные числа
 System::Void MatrixForm::MyForm::buttonRandValue_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	int size = static_cast<int>(matrA->getSize());
@@ -129,6 +134,7 @@ System::Void MatrixForm::MyForm::buttonRandValue_Click(System::Object^ sender, S
 	matrC->clear();
 	showMatrixC();
 }
+// Очищает все матрицы
 System::Void MatrixForm::MyForm::buttonClearMatrix_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	matrA->clear();
@@ -142,6 +148,8 @@ System::Void MatrixForm::MyForm::buttonClearMatrix_Click(System::Object^ sender,
 
 
 
+
+// Выводит матрицы
 System::Void MatrixForm::MyForm::showMatrixA()
 {
 	int size = static_cast<int>(matrA->getSize());
@@ -150,7 +158,7 @@ System::Void MatrixForm::MyForm::showMatrixA()
 		for (int j = 0; j < size; ++j)
 		{
 			dataGridViewMatrixA->Columns[j]->Width = Convert::ToDouble(dataGridViewMatrixA->Width) / Convert::ToDouble(numericUpDownSizeMatrix->Value);
-			dataGridViewMatrixA->Rows[i]->Height = Convert::ToDouble(dataGridViewMatrixA->Width) / Convert::ToDouble(numericUpDownSizeMatrix->Value) + 0.1;
+			dataGridViewMatrixA->Rows[i]->Height = Convert::ToDouble(dataGridViewMatrixA->Width) / Convert::ToDouble(numericUpDownSizeMatrix->Value);
 			dataGridViewMatrixA->Rows[i]->Cells[j]->Value = matrA->getValue(i, j);
 		}
 }
@@ -181,6 +189,8 @@ System::Void MatrixForm::MyForm::showMatrixC()
 
 
 
+
+// Ограничивает ввод в ячейки ниже главной диагонали
 System::Void MatrixForm::MyForm::readOnlyA()
 {
 	int size = static_cast<int>(matrA->getSize());
@@ -200,12 +210,15 @@ System::Void MatrixForm::MyForm::readOnlyB()
 
 
 
+
+// Обрабатывает ввод с клавиатуры
 System::Void MatrixForm::MyForm::tb_KeyPress(Object^ sender, KeyPressEventArgs^ e)
 {
 	if (!(Char::IsDigit(e->KeyChar) || e->KeyChar == (char)Keys::Back || e->KeyChar == '-'))
 		e->Handled = true;
 }
 
+// Контролирует ячейки матриц при их изменении (задействуется tb_KeyPress)
 System::Void MatrixForm::MyForm::dataGridViewMatrixA_EditingControlShowing(System::Object^ sender, System::Windows::Forms::DataGridViewEditingControlShowingEventArgs^ e)
 {
 
@@ -221,10 +234,14 @@ System::Void MatrixForm::MyForm::dataGridViewMatrixB_EditingControlShowing(Syste
 	tb->KeyPress += gcnew KeyPressEventHandler(this, &MatrixForm::MyForm::tb_KeyPress);
 }
 
+// Сохраняет результат ввода
 System::Void MatrixForm::MyForm::dataGridViewMatrixA_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
 {
 	int indRow = Convert::ToInt32(e->RowIndex);
 	int indCol = Convert::ToInt32(e->ColumnIndex);
+
+	if (Convert::ToString(dataGridViewMatrixA->Rows[indRow]->Cells[indCol]->Value) == "-")
+		dataGridViewMatrixA->Rows[indRow]->Cells[indCol]->Value = -1;
 
 	(*matrA)(indRow, indCol) = Convert::ToInt32(dataGridViewMatrixA->Rows[indRow]->Cells[indCol]->Value);
 }
@@ -232,6 +249,9 @@ System::Void MatrixForm::MyForm::dataGridViewMatrixB_CellEndEdit(System::Object^
 {
 	int indRow = Convert::ToInt32(e->RowIndex);
 	int indCol = Convert::ToInt32(e->ColumnIndex);
+
+	if (Convert::ToString(dataGridViewMatrixB->Rows[indRow]->Cells[indCol]->Value) == "-")
+		dataGridViewMatrixB->Rows[indRow]->Cells[indCol]->Value = -1;
 
 	(*matrB)(indRow, indCol) = Convert::ToInt32(dataGridViewMatrixB->Rows[indRow]->Cells[indCol]->Value);
 }

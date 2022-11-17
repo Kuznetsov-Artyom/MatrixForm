@@ -163,6 +163,7 @@ namespace MatrixForm {
 			this->dataGridViewMatrixC->AllowUserToDeleteRows = false;
 			this->dataGridViewMatrixC->AllowUserToResizeColumns = false;
 			this->dataGridViewMatrixC->AllowUserToResizeRows = false;
+			this->dataGridViewMatrixC->BackgroundColor = System::Drawing::SystemColors::ControlLightLight;
 			this->dataGridViewMatrixC->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridViewMatrixC->ColumnHeadersVisible = false;
 			this->dataGridViewMatrixC->Cursor = System::Windows::Forms::Cursors::No;
@@ -172,7 +173,7 @@ namespace MatrixForm {
 			this->dataGridViewMatrixC->RowHeadersVisible = false;
 			this->dataGridViewMatrixC->RowHeadersWidth = 51;
 			this->dataGridViewMatrixC->ScrollBars = System::Windows::Forms::ScrollBars::None;
-			this->dataGridViewMatrixC->Size = System::Drawing::Size(364, 336);
+			this->dataGridViewMatrixC->Size = System::Drawing::Size(364, 340);
 			this->dataGridViewMatrixC->TabIndex = 14;
 			this->dataGridViewMatrixC->TabStop = false;
 			// 
@@ -182,6 +183,7 @@ namespace MatrixForm {
 			this->dataGridViewMatrixB->AllowUserToDeleteRows = false;
 			this->dataGridViewMatrixB->AllowUserToResizeColumns = false;
 			this->dataGridViewMatrixB->AllowUserToResizeRows = false;
+			this->dataGridViewMatrixB->BackgroundColor = System::Drawing::SystemColors::ControlLightLight;
 			this->dataGridViewMatrixB->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridViewMatrixB->ColumnHeadersVisible = false;
 			this->dataGridViewMatrixB->Location = System::Drawing::Point(493, 108);
@@ -189,7 +191,7 @@ namespace MatrixForm {
 			this->dataGridViewMatrixB->RowHeadersVisible = false;
 			this->dataGridViewMatrixB->RowHeadersWidth = 51;
 			this->dataGridViewMatrixB->ScrollBars = System::Windows::Forms::ScrollBars::None;
-			this->dataGridViewMatrixB->Size = System::Drawing::Size(364, 336);
+			this->dataGridViewMatrixB->Size = System::Drawing::Size(364, 340);
 			this->dataGridViewMatrixB->TabIndex = 13;
 			this->dataGridViewMatrixB->TabStop = false;
 			this->dataGridViewMatrixB->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridViewMatrixB_CellEndEdit);
@@ -298,6 +300,7 @@ namespace MatrixForm {
 			this->dataGridViewMatrixA->AllowUserToDeleteRows = false;
 			this->dataGridViewMatrixA->AllowUserToResizeColumns = false;
 			this->dataGridViewMatrixA->AllowUserToResizeRows = false;
+			this->dataGridViewMatrixA->BackgroundColor = System::Drawing::SystemColors::ControlLightLight;
 			this->dataGridViewMatrixA->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridViewMatrixA->ColumnHeadersVisible = false;
 			this->dataGridViewMatrixA->Location = System::Drawing::Point(42, 108);
@@ -305,7 +308,7 @@ namespace MatrixForm {
 			this->dataGridViewMatrixA->RowHeadersVisible = false;
 			this->dataGridViewMatrixA->RowHeadersWidth = 51;
 			this->dataGridViewMatrixA->ScrollBars = System::Windows::Forms::ScrollBars::None;
-			this->dataGridViewMatrixA->Size = System::Drawing::Size(364, 336);
+			this->dataGridViewMatrixA->Size = System::Drawing::Size(364, 340);
 			this->dataGridViewMatrixA->TabIndex = 4;
 			this->dataGridViewMatrixA->TabStop = false;
 			this->dataGridViewMatrixA->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridViewMatrixA_CellEndEdit);
@@ -372,37 +375,49 @@ namespace MatrixForm {
 
 		}
 #pragma endregion
-// Изменение размерности матриц
+// Изменяет размерности матриц
 private: System::Void numericUpDownSizeMatrix_ValueChanged(System::Object^ sender, System::EventArgs^ e);
 
-// Кнопка сложения двух матриц
+
+
+
+// Складывает матрицы
 private: System::Void buttonAdd_Click(System::Object^ sender, System::EventArgs^ e);
-// Кнопка разности двух матриц
+// Вычитает матрицы
 private: System::Void buttonDif_Click(System::Object^ sender, System::EventArgs^ e);
-// Кнопка перемножения двух матриц
+// Перемноженает матрицы
 private: System::Void buttonMult_Click(System::Object^ sender, System::EventArgs^ e);
-// Кнопка для заполнения матриц сучайными числами
+// Генерирует для матриц A и B случайные числа
 private: System::Void buttonRandValue_Click(System::Object^ sender, System::EventArgs^ e);
-// Кнопка очистки всех матриц
+// Очищает все матрицы
 private: System::Void buttonClearMatrix_Click(System::Object^ sender, System::EventArgs^ e);
 
 
+
+
+// Выводит матрицы
 private: System::Void showMatrixA();
 private: System::Void showMatrixB();
 private: System::Void showMatrixC();
 
 
+
+
+// Ограничивает ввод в ячейки ниже главной диагонали
 private: System::Void readOnlyA();
 private: System::Void readOnlyB();
 
 
 
 
+// Обрабатывает ввод с клавиатуры
 private: void tb_KeyPress(Object^ sender, KeyPressEventArgs^ e);
 
+// Контролирует ячейки матриц при их изменении (задействуется tb_KeyPress)
 private: System::Void dataGridViewMatrixA_EditingControlShowing(System::Object^ sender, System::Windows::Forms::DataGridViewEditingControlShowingEventArgs^ e);
 private: System::Void dataGridViewMatrixB_EditingControlShowing(System::Object^ sender, System::Windows::Forms::DataGridViewEditingControlShowingEventArgs^ e);
 
+// Сохраняет результат ввода
 private: System::Void dataGridViewMatrixA_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 private: System::Void dataGridViewMatrixB_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 

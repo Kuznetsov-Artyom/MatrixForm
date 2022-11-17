@@ -36,6 +36,7 @@ public:
 	{
 		return mMatr.getValue(i).getValue(j);
 	}
+
 	void clear()
 	{
 		for (int i = 0; i < mSize; ++i)
