@@ -386,5 +386,9 @@ private: System::Void buttonClearMatrix_Click(System::Object^ sender, System::Ev
 private: System::Void showMatrixA();
 private: System::Void showMatrixB();
 private: System::Void showMatrixC();
+
+
+private: System::Void readOnlyA();
+private: System::Void readOnlyB();
 };
 }

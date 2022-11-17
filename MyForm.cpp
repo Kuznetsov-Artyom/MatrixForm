@@ -68,6 +68,9 @@ System::Void MatrixForm::MyForm::numericUpDownSizeMatrix_ValueChanged(System::Ob
 		dataGridViewMatrixC->RowCount = size;
 		dataGridViewMatrixC->ColumnCount = size;
 
+
+		readOnlyA();
+		readOnlyB();
 		
 
 		showMatrixA();
@@ -183,6 +186,24 @@ System::Void MatrixForm::MyForm::showMatrixC()
 			dataGridViewMatrixC->Rows[i]->Height = Convert::ToDouble(dataGridViewMatrixC->Width) / Convert::ToDouble(numericUpDownSizeMatrix->Value);
 			dataGridViewMatrixC->Rows[i]->Cells[j]->Value = matrC->getValue(i, j);
 		}
+}
+
+System::Void MatrixForm::MyForm::readOnlyA()
+{
+	int size = static_cast<int>(matrA->getSize());
+
+	for (int i = 0; i < size; ++i)
+		for (int j = 0; j < size; ++j)
+			if (i > j) dataGridViewMatrixA->Rows[i]->Cells[j]->ReadOnly = true;
+}
+
+System::Void MatrixForm::MyForm::readOnlyB()
+{
+	int size = static_cast<int>(matrA->getSize());
+
+	for (int i = 0; i < size; ++i)
+		for (int j = 0; j < size; ++j)
+			if (i > j) dataGridViewMatrixB->Rows[i]->Cells[j]->ReadOnly = true;
 }
 
 
