@@ -80,18 +80,16 @@ System::Void MatrixForm::MyForm::numericUpDownSizeMatrix_ValueChanged(System::Ob
 	}
 }
 
+
+
 System::Void MatrixForm::MyForm::buttonAdd_Click(System::Object^ sender, System::EventArgs^ e)
 {
-	/*delete matrC;
-	matrC = new TMatrix<int>(*matrA + *matrB);*/
-
 	matrC->operator=(*matrA + *matrB);
 
 	showMatrixA();
 	showMatrixB();
 	showMatrixC();
 }
-
 System::Void MatrixForm::MyForm::buttonDif_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	matrC->operator=(*matrA - *matrB);
@@ -100,7 +98,6 @@ System::Void MatrixForm::MyForm::buttonDif_Click(System::Object^ sender, System:
 	showMatrixB();
 	showMatrixC();
 }
-
 System::Void MatrixForm::MyForm::buttonMult_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	matrC->operator=(*matrA * *matrB);
@@ -109,7 +106,6 @@ System::Void MatrixForm::MyForm::buttonMult_Click(System::Object^ sender, System
 	showMatrixB();
 	showMatrixC();
 }
-
 System::Void MatrixForm::MyForm::buttonRandValue_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	int size = static_cast<int>(matrA->getSize());
@@ -133,7 +129,6 @@ System::Void MatrixForm::MyForm::buttonRandValue_Click(System::Object^ sender, S
 	matrC->clear();
 	showMatrixC();
 }
-
 System::Void MatrixForm::MyForm::buttonClearMatrix_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	matrA->clear();
@@ -147,8 +142,6 @@ System::Void MatrixForm::MyForm::buttonClearMatrix_Click(System::Object^ sender,
 
 
 
-
-
 System::Void MatrixForm::MyForm::showMatrixA()
 {
 	int size = static_cast<int>(matrA->getSize());
@@ -157,11 +150,10 @@ System::Void MatrixForm::MyForm::showMatrixA()
 		for (int j = 0; j < size; ++j)
 		{
 			dataGridViewMatrixA->Columns[j]->Width = Convert::ToDouble(dataGridViewMatrixA->Width) / Convert::ToDouble(numericUpDownSizeMatrix->Value);
-			dataGridViewMatrixA->Rows[i]->Height = Convert::ToDouble(dataGridViewMatrixA->Width) / Convert::ToDouble(numericUpDownSizeMatrix->Value);
+			dataGridViewMatrixA->Rows[i]->Height = Convert::ToDouble(dataGridViewMatrixA->Width) / Convert::ToDouble(numericUpDownSizeMatrix->Value) + 0.1;
 			dataGridViewMatrixA->Rows[i]->Cells[j]->Value = matrA->getValue(i, j);
 		}
 }
-
 System::Void MatrixForm::MyForm::showMatrixB()
 {
 	int size = static_cast<int>(matrB->getSize());
@@ -174,7 +166,6 @@ System::Void MatrixForm::MyForm::showMatrixB()
 			dataGridViewMatrixB->Rows[i]->Cells[j]->Value = matrB->getValue(i, j);
 		}
 }
-
 System::Void MatrixForm::MyForm::showMatrixC()
 {
 	int size = static_cast<int>(matrC->getSize());
@@ -188,6 +179,8 @@ System::Void MatrixForm::MyForm::showMatrixC()
 		}
 }
 
+
+
 System::Void MatrixForm::MyForm::readOnlyA()
 {
 	int size = static_cast<int>(matrA->getSize());
@@ -196,7 +189,6 @@ System::Void MatrixForm::MyForm::readOnlyA()
 		for (int j = 0; j < size; ++j)
 			if (i > j) dataGridViewMatrixA->Rows[i]->Cells[j]->ReadOnly = true;
 }
-
 System::Void MatrixForm::MyForm::readOnlyB()
 {
 	int size = static_cast<int>(matrA->getSize());
@@ -206,5 +198,42 @@ System::Void MatrixForm::MyForm::readOnlyB()
 			if (i > j) dataGridViewMatrixB->Rows[i]->Cells[j]->ReadOnly = true;
 }
 
+
+
+System::Void MatrixForm::MyForm::tb_KeyPress(Object^ sender, KeyPressEventArgs^ e)
+{
+	if (!(Char::IsDigit(e->KeyChar) || e->KeyChar == (char)Keys::Back || e->KeyChar == '-'))
+		e->Handled = true;
+}
+
+System::Void MatrixForm::MyForm::dataGridViewMatrixA_EditingControlShowing(System::Object^ sender, System::Windows::Forms::DataGridViewEditingControlShowingEventArgs^ e)
+{
+
+	TextBox^ tb = (TextBox^)e->Control;
+	tb->MaxLength = 5;
+	tb->KeyPress += gcnew KeyPressEventHandler(this, &MatrixForm::MyForm::tb_KeyPress);
+
+}
+System::Void MatrixForm::MyForm::dataGridViewMatrixB_EditingControlShowing(System::Object^ sender, System::Windows::Forms::DataGridViewEditingControlShowingEventArgs^ e)
+{
+	TextBox^ tb = (TextBox^)e->Control;
+	tb->MaxLength = 5;
+	tb->KeyPress += gcnew KeyPressEventHandler(this, &MatrixForm::MyForm::tb_KeyPress);
+}
+
+System::Void MatrixForm::MyForm::dataGridViewMatrixA_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
+{
+	int indRow = Convert::ToInt32(e->RowIndex);
+	int indCol = Convert::ToInt32(e->ColumnIndex);
+
+	(*matrA)(indRow, indCol) = Convert::ToInt32(dataGridViewMatrixA->Rows[indRow]->Cells[indCol]->Value);
+}
+System::Void MatrixForm::MyForm::dataGridViewMatrixB_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
+{
+	int indRow = Convert::ToInt32(e->RowIndex);
+	int indCol = Convert::ToInt32(e->ColumnIndex);
+
+	(*matrB)(indRow, indCol) = Convert::ToInt32(dataGridViewMatrixB->Rows[indRow]->Cells[indCol]->Value);
+}
 
 

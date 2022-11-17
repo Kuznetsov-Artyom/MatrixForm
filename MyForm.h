@@ -192,6 +192,8 @@ namespace MatrixForm {
 			this->dataGridViewMatrixB->Size = System::Drawing::Size(364, 336);
 			this->dataGridViewMatrixB->TabIndex = 13;
 			this->dataGridViewMatrixB->TabStop = false;
+			this->dataGridViewMatrixB->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridViewMatrixB_CellEndEdit);
+			this->dataGridViewMatrixB->EditingControlShowing += gcnew System::Windows::Forms::DataGridViewEditingControlShowingEventHandler(this, &MyForm::dataGridViewMatrixB_EditingControlShowing);
 			// 
 			// groupBoxClearMatr
 			// 
@@ -306,6 +308,8 @@ namespace MatrixForm {
 			this->dataGridViewMatrixA->Size = System::Drawing::Size(364, 336);
 			this->dataGridViewMatrixA->TabIndex = 4;
 			this->dataGridViewMatrixA->TabStop = false;
+			this->dataGridViewMatrixA->CellEndEdit += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyForm::dataGridViewMatrixA_CellEndEdit);
+			this->dataGridViewMatrixA->EditingControlShowing += gcnew System::Windows::Forms::DataGridViewEditingControlShowingEventHandler(this, &MyForm::dataGridViewMatrixA_EditingControlShowing);
 			// 
 			// labelMatrixC
 			// 
@@ -390,5 +394,17 @@ private: System::Void showMatrixC();
 
 private: System::Void readOnlyA();
 private: System::Void readOnlyB();
+
+
+
+
+private: void tb_KeyPress(Object^ sender, KeyPressEventArgs^ e);
+
+private: System::Void dataGridViewMatrixA_EditingControlShowing(System::Object^ sender, System::Windows::Forms::DataGridViewEditingControlShowingEventArgs^ e);
+private: System::Void dataGridViewMatrixB_EditingControlShowing(System::Object^ sender, System::Windows::Forms::DataGridViewEditingControlShowingEventArgs^ e);
+
+private: System::Void dataGridViewMatrixA_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+private: System::Void dataGridViewMatrixB_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+
 };
 }
