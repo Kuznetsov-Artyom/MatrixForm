@@ -119,18 +119,18 @@ namespace MatrixForm {
 			this->labelSizeMatrix->AutoSize = true;
 			this->labelSizeMatrix->Font = (gcnew System::Drawing::Font(L"Tahoma", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->labelSizeMatrix->Location = System::Drawing::Point(30, 30);
+			this->labelSizeMatrix->Location = System::Drawing::Point(30, 27);
 			this->labelSizeMatrix->Name = L"labelSizeMatrix";
-			this->labelSizeMatrix->Size = System::Drawing::Size(190, 36);
+			this->labelSizeMatrix->Size = System::Drawing::Size(174, 36);
 			this->labelSizeMatrix->TabIndex = 0;
-			this->labelSizeMatrix->Text = L"Размерность";
+			this->labelSizeMatrix->Text = L"Size matrixs";
 			// 
 			// numericUpDownSizeMatrix
 			// 
 			this->numericUpDownSizeMatrix->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->numericUpDownSizeMatrix->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
-			this->numericUpDownSizeMatrix->Location = System::Drawing::Point(230, 35);
+			this->numericUpDownSizeMatrix->Location = System::Drawing::Point(210, 33);
 			this->numericUpDownSizeMatrix->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 10, 0, 0, 0 });
 			this->numericUpDownSizeMatrix->Name = L"numericUpDownSizeMatrix";
 			this->numericUpDownSizeMatrix->Size = System::Drawing::Size(102, 30);
@@ -207,7 +207,7 @@ namespace MatrixForm {
 			this->groupBoxClearMatr->Size = System::Drawing::Size(364, 157);
 			this->groupBoxClearMatr->TabIndex = 12;
 			this->groupBoxClearMatr->TabStop = false;
-			this->groupBoxClearMatr->Text = L"Очистка";
+			this->groupBoxClearMatr->Text = L"Clear";
 			// 
 			// buttonClearMatrix
 			// 
@@ -218,7 +218,7 @@ namespace MatrixForm {
 			this->buttonClearMatrix->Name = L"buttonClearMatrix";
 			this->buttonClearMatrix->Size = System::Drawing::Size(352, 75);
 			this->buttonClearMatrix->TabIndex = 0;
-			this->buttonClearMatrix->Text = L"Очистить матрицы";
+			this->buttonClearMatrix->Text = L"Clear matrixs";
 			this->buttonClearMatrix->UseVisualStyleBackColor = true;
 			this->buttonClearMatrix->Click += gcnew System::EventHandler(this, &MyForm::buttonClearMatrix_Click);
 			// 
@@ -232,7 +232,7 @@ namespace MatrixForm {
 			this->groupBoxRandGenMatr->Size = System::Drawing::Size(364, 157);
 			this->groupBoxRandGenMatr->TabIndex = 11;
 			this->groupBoxRandGenMatr->TabStop = false;
-			this->groupBoxRandGenMatr->Text = L"Прочее";
+			this->groupBoxRandGenMatr->Text = L"Other";
 			// 
 			// buttonRandValue
 			// 
@@ -243,7 +243,7 @@ namespace MatrixForm {
 			this->buttonRandValue->Name = L"buttonRandValue";
 			this->buttonRandValue->Size = System::Drawing::Size(352, 75);
 			this->buttonRandValue->TabIndex = 0;
-			this->buttonRandValue->Text = L"Заполнить случайными числами";
+			this->buttonRandValue->Text = L"Fill with random numbers";
 			this->buttonRandValue->UseVisualStyleBackColor = true;
 			this->buttonRandValue->Click += gcnew System::EventHandler(this, &MyForm::buttonRandValue_Click);
 			// 
@@ -259,7 +259,7 @@ namespace MatrixForm {
 			this->groupBoxOperations->Size = System::Drawing::Size(364, 157);
 			this->groupBoxOperations->TabIndex = 10;
 			this->groupBoxOperations->TabStop = false;
-			this->groupBoxOperations->Text = L"Операции";
+			this->groupBoxOperations->Text = L"Operations";
 			// 
 			// buttonDif
 			// 
@@ -279,7 +279,7 @@ namespace MatrixForm {
 			this->buttonMult->Name = L"buttonMult";
 			this->buttonMult->Size = System::Drawing::Size(75, 75);
 			this->buttonMult->TabIndex = 9;
-			this->buttonMult->Text = L"х";
+			this->buttonMult->Text = L"x";
 			this->buttonMult->UseVisualStyleBackColor = true;
 			this->buttonMult->Click += gcnew System::EventHandler(this, &MyForm::buttonMult_Click);
 			// 
@@ -319,33 +319,33 @@ namespace MatrixForm {
 			this->labelMatrixC->AutoSize = true;
 			this->labelMatrixC->Font = (gcnew System::Drawing::Font(L"Tahoma", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->labelMatrixC->Location = System::Drawing::Point(1044, 44);
+			this->labelMatrixC->Location = System::Drawing::Point(1053, 44);
 			this->labelMatrixC->Name = L"labelMatrixC";
-			this->labelMatrixC->Size = System::Drawing::Size(162, 36);
+			this->labelMatrixC->Size = System::Drawing::Size(124, 36);
 			this->labelMatrixC->TabIndex = 3;
-			this->labelMatrixC->Text = L"Матрица С";
+			this->labelMatrixC->Text = L"Matrix C";
 			// 
 			// labelMatrixB
 			// 
 			this->labelMatrixB->AutoSize = true;
 			this->labelMatrixB->Font = (gcnew System::Drawing::Font(L"Tahoma", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->labelMatrixB->Location = System::Drawing::Point(594, 44);
+			this->labelMatrixB->Location = System::Drawing::Point(606, 44);
 			this->labelMatrixB->Name = L"labelMatrixB";
-			this->labelMatrixB->Size = System::Drawing::Size(162, 36);
+			this->labelMatrixB->Size = System::Drawing::Size(124, 36);
 			this->labelMatrixB->TabIndex = 2;
-			this->labelMatrixB->Text = L"Матрица В";
+			this->labelMatrixB->Text = L"Matrix B";
 			// 
 			// labelMatrixA
 			// 
 			this->labelMatrixA->AutoSize = true;
 			this->labelMatrixA->Font = (gcnew System::Drawing::Font(L"Tahoma", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->labelMatrixA->Location = System::Drawing::Point(144, 44);
+			this->labelMatrixA->Location = System::Drawing::Point(152, 44);
 			this->labelMatrixA->Name = L"labelMatrixA";
-			this->labelMatrixA->Size = System::Drawing::Size(162, 36);
+			this->labelMatrixA->Size = System::Drawing::Size(124, 36);
 			this->labelMatrixA->TabIndex = 1;
-			this->labelMatrixA->Text = L"Матрица А";
+			this->labelMatrixA->Text = L"Matrix A";
 			// 
 			// MyForm
 			// 
@@ -360,7 +360,7 @@ namespace MatrixForm {
 			this->MaximizeBox = false;
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Матрицы";
+			this->Text = L"Matrixs";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDownSizeMatrix))->EndInit();
 			this->groupBoxWorkingSpace->ResumeLayout(false);
 			this->groupBoxWorkingSpace->PerformLayout();
