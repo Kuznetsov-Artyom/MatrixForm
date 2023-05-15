@@ -28,7 +28,7 @@ TMatrix<int>* matrC = nullptr;
 
 
 
-// Изменяет размерности матриц
+// Changes the dimensions of matrices
 System::Void MatrixForm::MyForm::numericUpDownSizeMatrix_ValueChanged(System::Object^ sender, System::EventArgs^ e)
 {
 	int size = Convert::ToInt32(numericUpDownSizeMatrix->Value);
@@ -53,7 +53,7 @@ System::Void MatrixForm::MyForm::numericUpDownSizeMatrix_ValueChanged(System::Ob
 	{
 		groupBoxWorkingSpace->Show();
 
-		// Создаем матрицы с новой размерностью
+		// Creating matrices with a new size
 		matrA = new TMatrix<int>(size);
 		matrB = new TMatrix<int>(size);
 		matrC = new TMatrix<int>(size);
@@ -83,7 +83,7 @@ System::Void MatrixForm::MyForm::numericUpDownSizeMatrix_ValueChanged(System::Ob
 
 
 
-// Складывает матрицы
+// Add matrixs
 System::Void MatrixForm::MyForm::buttonAdd_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	matrC->operator=(*matrA + *matrB);
@@ -92,7 +92,7 @@ System::Void MatrixForm::MyForm::buttonAdd_Click(System::Object^ sender, System:
 	showMatrixB();
 	showMatrixC();
 }
-// Вычитает матрицы
+// Dif matrixs
 System::Void MatrixForm::MyForm::buttonDif_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	matrC->operator=(*matrA - *matrB);
@@ -101,7 +101,7 @@ System::Void MatrixForm::MyForm::buttonDif_Click(System::Object^ sender, System:
 	showMatrixB();
 	showMatrixC();
 }
-// Перемноженает матрицы
+// Mult matrixs
 System::Void MatrixForm::MyForm::buttonMult_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	matrC->operator=(*matrA * *matrB);
@@ -110,7 +110,7 @@ System::Void MatrixForm::MyForm::buttonMult_Click(System::Object^ sender, System
 	showMatrixB();
 	showMatrixC();
 }
-// Генерирует для матриц A и B случайные числа
+// Generates random numbers for matrices A and B
 System::Void MatrixForm::MyForm::buttonRandValue_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	int size = static_cast<int>(matrA->getSize());
@@ -134,7 +134,7 @@ System::Void MatrixForm::MyForm::buttonRandValue_Click(System::Object^ sender, S
 	matrC->clear();
 	showMatrixC();
 }
-// Очищает все матрицы
+// Clears all matrices
 System::Void MatrixForm::MyForm::buttonClearMatrix_Click(System::Object^ sender, System::EventArgs^ e)
 {
 	matrA->clear();
@@ -149,7 +149,7 @@ System::Void MatrixForm::MyForm::buttonClearMatrix_Click(System::Object^ sender,
 
 
 
-// Выводит матрицы
+// Show matrixs
 System::Void MatrixForm::MyForm::showMatrixA()
 {
 	int size = static_cast<int>(matrA->getSize());
@@ -190,7 +190,7 @@ System::Void MatrixForm::MyForm::showMatrixC()
 
 
 
-// Ограничивает ввод в ячейки ниже главной диагонали
+// Restricts input to cells below the main diagonal
 System::Void MatrixForm::MyForm::readOnlyA()
 {
 	int size = static_cast<int>(matrA->getSize());
@@ -211,14 +211,14 @@ System::Void MatrixForm::MyForm::readOnlyB()
 
 
 
-// Обрабатывает ввод с клавиатуры
+// Handles keyboard input
 System::Void MatrixForm::MyForm::tb_KeyPress(Object^ sender, KeyPressEventArgs^ e)
 {
 	if (!(Char::IsDigit(e->KeyChar) || e->KeyChar == (char)Keys::Back || e->KeyChar == '-'))
 		e->Handled = true;
 }
 
-// Контролирует ячейки матриц при их изменении (задействуется tb_KeyPress)
+// Controls matrix cells when they change (tb_KeyPress is involved)
 System::Void MatrixForm::MyForm::dataGridViewMatrixA_EditingControlShowing(System::Object^ sender, System::Windows::Forms::DataGridViewEditingControlShowingEventArgs^ e)
 {
 
@@ -234,7 +234,7 @@ System::Void MatrixForm::MyForm::dataGridViewMatrixB_EditingControlShowing(Syste
 	tb->KeyPress += gcnew KeyPressEventHandler(this, &MatrixForm::MyForm::tb_KeyPress);
 }
 
-// Сохраняет результат ввода
+// Saves the input result
 System::Void MatrixForm::MyForm::dataGridViewMatrixA_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
 {
 	int indRow = Convert::ToInt32(e->RowIndex);

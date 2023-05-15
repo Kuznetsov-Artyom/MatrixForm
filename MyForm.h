@@ -375,27 +375,27 @@ namespace MatrixForm {
 
 		}
 #pragma endregion
-// Изменяет размерности матриц
+// Changes the dimensions of matrices
 private: System::Void numericUpDownSizeMatrix_ValueChanged(System::Object^ sender, System::EventArgs^ e);
 
 
 
 
-// Складывает матрицы
+// Add matrixs
 private: System::Void buttonAdd_Click(System::Object^ sender, System::EventArgs^ e);
-// Вычитает матрицы
+// Dif matrixs
 private: System::Void buttonDif_Click(System::Object^ sender, System::EventArgs^ e);
-// Перемноженает матрицы
+// Mult matrixs
 private: System::Void buttonMult_Click(System::Object^ sender, System::EventArgs^ e);
-// Генерирует для матриц A и B случайные числа
+// Generates random numbers for matrices A and B
 private: System::Void buttonRandValue_Click(System::Object^ sender, System::EventArgs^ e);
-// Очищает все матрицы
+// Clears all matrices
 private: System::Void buttonClearMatrix_Click(System::Object^ sender, System::EventArgs^ e);
 
 
 
 
-// Выводит матрицы
+// Show matrixs
 private: System::Void showMatrixA();
 private: System::Void showMatrixB();
 private: System::Void showMatrixC();
@@ -403,21 +403,21 @@ private: System::Void showMatrixC();
 
 
 
-// Ограничивает ввод в ячейки ниже главной диагонали
+// Restricts input to cells below the main diagonal
 private: System::Void readOnlyA();
 private: System::Void readOnlyB();
 
 
 
 
-// Обрабатывает ввод с клавиатуры
+// Handles keyboard input
 private: void tb_KeyPress(Object^ sender, KeyPressEventArgs^ e);
 
-// Контролирует ячейки матриц при их изменении (задействуется tb_KeyPress)
+// Controls matrix cells when they change (tb_KeyPress is involved)
 private: System::Void dataGridViewMatrixA_EditingControlShowing(System::Object^ sender, System::Windows::Forms::DataGridViewEditingControlShowingEventArgs^ e);
 private: System::Void dataGridViewMatrixB_EditingControlShowing(System::Object^ sender, System::Windows::Forms::DataGridViewEditingControlShowingEventArgs^ e);
 
-// Сохраняет результат ввода
+// Saves the input result
 private: System::Void dataGridViewMatrixA_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 private: System::Void dataGridViewMatrixB_CellEndEdit(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 

@@ -2,7 +2,6 @@
 #define T_VECTOR_HPP
 
 #include <iostream>
-#include <omp.h>
 
 
 template<typename T>

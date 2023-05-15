@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include "TVector.hpp"
-#include <omp.h>
 
 
 
@@ -90,8 +89,6 @@ public:
 
 		TMatrix<T> newMatr(mSize);
 
-
-#pragma omp parallel for shared(newMatr)
 		for (int i = 0; i < mSize; ++i)
 			for (int j = 0; j < mSize; ++j)
 				for (int k = 0; k < mSize; ++k)
